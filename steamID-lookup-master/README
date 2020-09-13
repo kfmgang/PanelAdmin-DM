@@ -1,0 +1,33 @@
+Find Steam player info and VAC status.
+
+//Changelog
+*****************
+
+1-14-2013
+======
+- steamidForm.php
+- steamidProcess.php
+- steamid.js
++ index.php
++ functions.php
++ style.css
++ images/
++ images/bg_inner.png
++ images/error.svg
++ images/warning.svg
++ images/favicon.png
++ images/searchGlass.png
+
+4-5-2012
+======
++ steamidForm.php
++ steamidProcess.php
++ steamid.js
++ README
+
+//
+DJWolf
+
+Demo Here: http://djwolf.no-ip.org/steamSearch/
+
+Type in either the players steam id, community id, or community url.

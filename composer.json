@@ -1,0 +1,8 @@
+{
+    "require": {
+        "matomo/ini": "^2.0",
+        "xpaw/steamid": "^1.0",
+        "magicalex/write-ini-file": "^2.0",
+        "zyberspace/steam-web-api-client": "^0.5.0"
+    }
+}

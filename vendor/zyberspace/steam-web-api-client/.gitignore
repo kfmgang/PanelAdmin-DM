@@ -1,0 +1,5 @@
+/composer.lock
+/.apikey
+/vendor/
+/phpdoc/
+/.project
