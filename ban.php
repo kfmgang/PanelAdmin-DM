@@ -14,13 +14,8 @@ $bannedUsers = str_replace("}", "", $bannedUsers);
 $bannedUsers = str_replace("'", "", $bannedUsers);
 $obj = explode(",", $bannedUsers);
 
-#$ini = new INI('D:Program Files (x86)/Steam/steamapps/common/Dead Matter Dedicated Server/deadmatter/Saved/Config/WindowsServer/game.ini');
-
-#$ini->data['/Script/DeadMatter.SurvivalBaseGamemode']['Whitelist'][74] = '76561190000000001';
-#$ini->write();
   $client = new \Zyberspace\SteamWebApi\Client('C93FFB23FD0B17F012878B8B3FA69379');
   $steamUser = new \Zyberspace\SteamWebApi\Interfaces\ISteamUser($client);
- # print_r($datas)
 ?>
 <?php include BASE_PATH . '/includes/header.php'; ?>
 <!-- Main container -->
@@ -80,7 +75,7 @@ $obj = explode(",", $bannedUsers);
             <!-- Delete Confirmation Modal -->
             <div class="modal fade" id="confirm-delete-<?php echo $id; ?>" role="dialog">
                 <div class="modal-dialog">
-                    <form action="delete_whitelist.php" method="POST">
+                    <form action="delete_ban.php" method="POST">
                         <!-- Modal content -->
                         <div class="modal-content">
                             <div class="modal-header">

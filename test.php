@@ -13,5 +13,12 @@ $bannedUsers = str_replace("}", "", $bannedUsers);
 
 $obj = explode(",", $bannedUsers);
 
-print json_encode($obj[0]);
+unset($obj[1]);
+$obj = array_values($obj);
+
+$sql ="UPDATE GameSession SET BannedUsers = :bannedUsers WHERE DocumentID = 1";
+$test = $db->prepare($sql);
+$test->bindParam(':bannedUsers', $BannedUsers, PDO::PARAM_INT);    
+$test->execute();
+print_r($test);
 ?>

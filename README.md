@@ -20,12 +20,11 @@ Admin
 - Ajout filtre (Steamid,Pseudo) ✅ 
 
 Ban
-- List des joueurs Ban ⚙️  
-   - affiche leurs steamid64❌ 
-   - affiche leur pseudo steam❌  
-   - affiche leurs date de ban (voir si possible)❌  
-- Possible d'effacer ❌ 
-- Ajout filtre (Steamid,Pseudo)❌  
+- List des joueurs Ban ✅  
+   - affiche leurs steamid64✅ 
+   - affiche leur pseudo steam✅    
+- Possible d'effacer ✅ 
+- Ajout filtre (Steamid,Pseudo)✅  
 
 Config Serveur (Game.ini)
 - List des options de config❌  
