@@ -2,20 +2,19 @@
 session_start();
 require_once 'config/config.php';
 require_once BASE_PATH.'/includes/auth_validate.php';
-include 'INI.class.php'; 
+include 'INI.class.php';
+include 'list.php';  
 
-// Sanitize if you want
-$whitelist_id = filter_input(INPUT_GET, 'whitelist_id');
-$steam_id = filter_input(INPUT_GET, 'steam_id');
-$operation = filter_input(INPUT_GET, 'operation', FILTER_SANITIZE_STRING); 
-($operation == 'edit') ? $edit = true : $edit = false;
+$ini_file='game_list.ini';
+$datas  = parse_ini_file( $ini_file, true );
 
+$servername = $datas['/Script/DeadMatter.DMGameSession']['ServerName'];
+
+($servername === NULL) ? $edit = false : $edit = true;
 $ini = new INI('game_list.ini');
 // Handle update request. As the form's action attribute is set to the same script, but 'POST' method, 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') 
 {
-    // Get customer id form query string parameter.
-    $whitelist_id = filter_input(INPUT_GET, 'whitelist_id');
 
     // Get input data
     $newsteamid = htmlspecialchars($_POST['new_steamid']);
