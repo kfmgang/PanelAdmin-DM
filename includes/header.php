@@ -91,7 +91,8 @@
                                     <a href="#"><i class="fas fa-user-shield fa-fw"></i> Admin InGame<i class="fa arrow"></i></a>
                                     <ul class="nav nav-second-level">
                                         <li><a href="adminDM.php"><i class="fa fa-list fa-fw"></i> List all</a></li>
-                                        <li><a href="add_adminDM.php"><i class="fa fa-plus fa-fw"></i> Add New</a></li>
+                                        <li><a href="add_adminDM.php"><i class="fa fa-plus fa-fw"></i> Add New Admin</a></li>
+                                        <li><a href="add_superadmin.php"><i class="fa fa-plus fa-fw"></i> Add New Superadmin</a></li>
                                     </ul>
                                 </li>
                                 <li<?php echo (CURRENT_PAGE == 'serverconfig.php' ) ? ' class="active"' : ''; ?>>
