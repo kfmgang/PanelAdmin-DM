@@ -2,7 +2,8 @@
 $variable = [
 ["ServerName","Server name. Has a soft limit of 255 characters due to Steam server limitations."],
 ["Password","Server password. Has a soft limit of 255 characters due to Steam server limitations."],
-["ServerTags","Server's MOTD, displayed in character creation."],
+["MOTD","Server's MOTD, displayed in character creation."],
+["ServerTags","List of server tags for Steam - eg. 'Roleplay,' 'Hardcore,' 'PvP,' etc."],
 ["MaxPlayerClaims","Maximum claims per group or player."],
 ["Seed","Server random seed. Not used much."],
 ["bFirstPersonOnly","If the server forces first person only. For gameplay reasons, this has no effect."],

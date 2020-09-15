@@ -11,17 +11,9 @@
   </thead>
   <?php
   $data= $datas['/Script/DeadMatter.DMGameSession'];
-  for ($i=0; $i < count($data); $i++) { 
+  for ($i=0; $i < count($variable); $i++) { 
     $test = $variable[$i][0];
-    if(is_array($data[$variable[$i][0]]))
-          {
-            // foreach ($test as $key) {
-            //     echo ($key);
-            // }
-            var_dump($data[$test]);
-          }else{
-            echo($data[$variable[$i][0]]);
-          }
+
     //echo($datas[$variable[$i][0]]);
     ?>
     <tbody>
@@ -34,7 +26,7 @@
       <input type="text" name="new_steamid" value="<?php if(array_key_exists($test, $data)){
           if(is_array($data[$variable[$i][0]]))
           {
-            foreach ($data[$test] as $key) {
+            foreach ( $datas['/Script/DeadMatter.DMGameSession']['ServerTags'] as $key) {
                 echo ($key);
             }
           }else{
@@ -51,6 +43,8 @@
     </td>
     </tr>
     <?php 
+    $error = $data[$variable[$i][0]];
+    echo($error);
      }
     ?>
   </tbody>
@@ -61,3 +55,6 @@
         <button type="submit" class="btn btn-warning" >Save <i class="glyphicon glyphicon-send"></i></button>
     </div>
 </fieldset>
+<?php
+echo(count($data));
+?>

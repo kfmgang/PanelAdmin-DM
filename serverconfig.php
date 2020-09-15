@@ -4,14 +4,23 @@ require_once 'config/config.php';
 require_once BASE_PATH.'/includes/auth_validate.php';
 include 'INI.class.php';
 include 'list.php';  
-
+$ini = new INI('game_list.ini');
 $ini_file='game_list.ini';
+$verf  = parse_ini_file( $ini_file, true );
+
+if(array_key_exists('ServerTags', $verf['/Script/DeadMatter.DMGameSession'])){
+    
+}else{
+    $ini->data['/Script/DeadMatter.DMGameSession']['ServerTags'][0] = "";
+    $ini->data['/Script/DeadMatter.DMGameSession']['ServerTags'][1] = "";
+    $ini->data['/Script/DeadMatter.DMGameSession']['ServerTags'][2] = "";
+    $ini->data['/Script/DeadMatter.DMGameSession']['ServerTags'][3] = "";
+    $ini->write();
+}
+
+
 $datas  = parse_ini_file( $ini_file, true );
 
-$servername = $datas['/Script/DeadMatter.DMGameSession']['ServerName'];
-
-($servername === NULL) ? $edit = false : $edit = true;
-$ini = new INI('game_list.ini');
 // Handle update request. As the form's action attribute is set to the same script, but 'POST' method, 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') 
 {

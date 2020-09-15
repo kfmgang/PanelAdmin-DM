@@ -7,8 +7,14 @@ require_once 'includes/auth_validate.php';
 $db = getDbInstance();
 
 //Get Dashboard information
-$numCustomers = $db->getValue ("customers", "count(*)");
-
+$db = new PDO('sqlite:SaveData_v01.db');
+$result = $db->query('SELECT * from GameSession');
+$bannedUsers = $result->fetch(PDO::FETCH_ASSOC)['BannedUsers'];
+$bannedUsers = str_replace("Steamworker:", "", $bannedUsers);
+$bannedUsers = str_replace("{", "", $bannedUsers);
+$bannedUsers = str_replace("}", "", $bannedUsers);
+$bannedUsers = str_replace("'", "", $bannedUsers);
+$obj = explode(",", $bannedUsers);
 include_once('includes/header.php');
 
 
@@ -48,7 +54,7 @@ $test = $datas['/Script/DeadMatter.SurvivalBaseGamemode']['Whitelist'];
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-xs-3">
-                            <i class="fa fa-tasks fa-5x"></i>
+                            <i class="fas fa-gamepad fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
                             <div class="huge">0</div>
@@ -71,7 +77,7 @@ $test = $datas['/Script/DeadMatter.SurvivalBaseGamemode']['Whitelist'];
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-xs-3">
-                            <i class="fa fa-tasks fa-5x"></i>
+                            <i class="fas fa-user-shield fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
                             <div class="huge">0</div>
@@ -116,15 +122,15 @@ $test = $datas['/Script/DeadMatter.SurvivalBaseGamemode']['Whitelist'];
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-xs-3">
-                            <i class="fa fa-tasks fa-5x"></i>
+                            <i class="fas fa-users-slash fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">0</div>
+                            <div class="huge"><?php echo(count($obj)); ?></div>
                             <div>Banned</div>
                         </div>
                     </div>
                 </div>
-                <a href="#">
+                <a href="ban.php">
                     <div class="panel-footer">
                         <span class="pull-left">View Details</span>
                         <span class="pull-left"></span>
