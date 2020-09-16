@@ -1,4 +1,10 @@
 <fieldset>
+    <!-- Filters  -->
+    <div class="well text-center filter-form">
+    <label for="myInput">Search</label>
+    <input type="text" class="form-control" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+</div>    
+    <!-- //Filters -->
 <h2>[/Script/DeadMatter.DMGameSession]</h2>
 <table id="myTable" class="table table-striped table-bordered table-condensed" data-name="listtable">
   <tbody>

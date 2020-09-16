@@ -30,7 +30,7 @@ $ini_file='game_list.ini';
         </div>
     </div>
     <?php include BASE_PATH . '/includes/flash_messages.php'; ?>
-    <!-- Filters Ne fonctionne pas -->
+    <!-- Filters  -->
 <div class="well text-center filter-form">
     <label for="myInput">Search</label>
     <input type="text" class="form-control" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
