@@ -3,18 +3,13 @@ session_start();
 require_once './config/config.php';
 require_once 'includes/auth_validate.php';
 
+require_once './functions/requests.php';
 //Get DB instance. function is defined in config.php
 $db = getDbInstance();
 
 //Get Dashboard information
-$db = new PDO('sqlite:SaveData_v01.db');
-$result = $db->query('SELECT * from GameSession');
-$bannedUsers = $result->fetch(PDO::FETCH_ASSOC)['BannedUsers'];
-$bannedUsers = str_replace("Steamworker:", "", $bannedUsers);
-$bannedUsers = str_replace("{", "", $bannedUsers);
-$bannedUsers = str_replace("}", "", $bannedUsers);
-$bannedUsers = str_replace("'", "", $bannedUsers);
-$obj = explode(",", $bannedUsers);
+$obj = getBannedUsers();
+
 include_once('includes/header.php');
 
 
@@ -132,7 +127,7 @@ $test = $datas['/Script/DeadMatter.SurvivalBaseGamemode']['Whitelist'];
                 </div>
                 <a href="ban.php">
                     <div class="panel-footer">
-                        <span class="pull-left">View Details</span>
+                        <span class="pull-left" <?php echo (CURRENT_PAGE == 'ban.php') ? ' class="active"' : ''; ?>>View Details</span>
                         <span class="pull-left"></span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                         <div class="clearfix"></div>

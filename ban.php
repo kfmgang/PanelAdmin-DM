@@ -5,14 +5,9 @@ require_once 'config/config.php';
 require_once BASE_PATH . '/includes/auth_validate.php';
 require __DIR__ . "/src/functions.php";
 
-$db = new PDO('sqlite:SaveData_v01.db');
-$result = $db->query('SELECT * from GameSession');
-$bannedUsers = $result->fetch(PDO::FETCH_ASSOC)['BannedUsers'];
-$bannedUsers = str_replace("Steamworker:", "", $bannedUsers);
-$bannedUsers = str_replace("{", "", $bannedUsers);
-$bannedUsers = str_replace("}", "", $bannedUsers);
-$bannedUsers = str_replace("'", "", $bannedUsers);
-$obj = explode(",", $bannedUsers);
+require_once './functions/requests.php';
+
+$obj = getBannedUsers();
 
   $client = new \Zyberspace\SteamWebApi\Client('C93FFB23FD0B17F012878B8B3FA69379');
   $steamUser = new \Zyberspace\SteamWebApi\Interfaces\ISteamUser($client);

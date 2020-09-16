@@ -9,44 +9,66 @@
       <th width="45%">description</th>
     </tr>
   </thead>
+
   <?php
+
   $data= $datas['/Script/DeadMatter.DMGameSession'];
+
+  $input_start = '<input style="margin-bottom: 2px;" type="text" name="new_steamid" value="';
+  $input_end =  '" placeholder="n/a" class="form-control" required="required" id ="new_steamid">';
+
   for ($i=0; $i < count($variable); $i++) { 
     $test = $variable[$i][0];
 
-    //echo($datas[$variable[$i][0]]);
+    // echo($datas[$variable[$i][0]]);
     ?>
+
     <tbody>
     <tr>
-      <td>
+      <td> <!-- Options -->
+
       <?php   
       echo $variable[$i][0];
       ?>    
-      <td>
-      <input type="text" name="new_steamid" value="<?php if(array_key_exists($test, $data)){
-          if(is_array($data[$variable[$i][0]]))
+
+      <td> <!-- Data -->
+
+      <?php 
+      if(array_key_exists($test, $data)){
+
+          if(!is_array($data[$variable[$i][0]]))
           {
-            foreach ( $datas['/Script/DeadMatter.DMGameSession']['ServerTags'] as $key) {
-                echo ($key);
-            }
+            // Normal display
+            $value = $data[$variable[$i][0]];
+            echo($input_start.$value.$input_end);
           }else{
-            echo($data[$variable[$i][0]]);
+            // Array display
+            foreach ( $datas['/Script/DeadMatter.DMGameSession']['ServerTags'] as $key) {
+              $value = $key;
+              echo($input_start.$value.$input_end);
+            }
           }
-}else{
-    echo('');
-}?>" placeholder="Servername" class="form-control" required="required" id = "new_steamid">
+      } else {
+        echo($input_start.$input_end);
+      }
+      ?>
+
       </td>
-      <td>
+      <td> <!-- Description -->
+
       <?php
     echo ($variable[$i][1]);
     ?> 
+
     </td>
     </tr>
+
     <?php 
-    $error = $data[$variable[$i][0]];
-    echo($error);
+    // $error = $data[$variable[$i][0]];
+    // echo($error);
      }
     ?>
+
   </tbody>
 </table>
     </div> 
@@ -55,6 +77,3 @@
         <button type="submit" class="btn btn-warning" >Save <i class="glyphicon glyphicon-send"></i></button>
     </div>
 </fieldset>
-<?php
-echo(count($data));
-?>
