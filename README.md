@@ -27,25 +27,23 @@ Ban
 - Ajout filtre (Steamid,Pseudo)✅  
 
 Config Serveur (Game.ini)
-- List des options de config❌  
-   - affiche la config actuel❌  
-   - affiche explication options de config❌ 
+- List des options de config✅⚙️(pas fini)  (seulement pour [/Script/DeadMatter.DMGameSession] )  
+   - affiche la config actuel✅  
+   - affiche explication options de config✅
 - Possible de modifier/effacer/ajouter❌  
 - Ajout sécurité sur les inputs❌  
-- Ajout filtre (Option, Valeur config)❌  
+- Ajout filtre (Option, Valeur config)✅  
 
 Gestion serveur
 - afficher le nb de joueurs connecté❌   
 - affiche le nb de joueurs sur whitelist ✅ 
 - affiche le nb d'admin❌ 
-- affiche le nb de ban❌ 
+- affiche le nb de ban✅ 
 - affiche l'uptime du serveur❌ 
 - afficher la memoire utilisé❌ 
 - afficher heure du dernier crash / restart❌ 
 - possibilité de Start/stop/restart❌ 
  
-- Ajout filtre (Option, Valeur config)❌ 
-
 NB Joueurs connecté (visible pour les joueurs)
 - List joueurs connecté ❌ 
    - affiche leurs photo profil steam ❌  
