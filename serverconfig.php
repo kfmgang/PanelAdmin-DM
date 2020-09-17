@@ -26,21 +26,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
 {
 
     // Get input data
-    $newsteamid = htmlspecialchars($_POST['new_steamid']);
-
+    $update = filter_input_array(INPUT_POST);
+    //$text = fopen('test.txt', 'r+');
+    //fputs($text, $update);
+    //fclose($text);
 
     $ini->data['/Script/DeadMatter.SurvivalBaseGamemode']['Whitelist'][$whitelist_id] = $newsteamid;
     $ini->write();
-
-        $_SESSION['success'] = 'Customer updated successfully!';
+    //  $update = print_r($update);
+        $_SESSION['success'] =  $update;
 
         //update Game.ini
         
-        $test = array("[]=", "[] = ", " = ");
-        $a = 'D:Program Files (x86)/Steam/steamapps/common/Dead Matter Dedicated Server/deadmatter/Saved/Config/WindowsServer/game.ini'; 
-        $b = file_get_contents('game_list.ini');  
-        $c = str_replace($test, '=', $b);
-        file_put_contents($a, $c);
 
         // Redirect to the listing page
         header('Location: serverconfig.php');
@@ -55,6 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
     <div class="row">
         <div class="col-lg-12">
             <h2 class="page-header">Server Config</h2>
+            
         </div>
     </div>
     <!-- Flash messages -->
