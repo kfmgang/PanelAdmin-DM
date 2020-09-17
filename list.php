@@ -1,19 +1,19 @@
 <?php
 $variable = [
-["ServerName","Server name. Has a soft limit of 255 characters due to Steam server limitations."],
-["Password","Server password. Has a soft limit of 255 characters due to Steam server limitations."],
-["MOTD","Server's MOTD, displayed in character creation."],
-["ServerTags","List of server tags for Steam - eg. 'Roleplay,' 'Hardcore,' 'PvP,' etc."],
-["MaxPlayerClaims","Maximum claims per group or player."],
-["Seed","Server random seed. Not used much."],
-["bFirstPersonOnly","If the server forces first person only. For gameplay reasons, this has no effect."],
-["bVACSecure","Whether or not to turn on VAC and EAC."],
-["bIsHardcore","Whether or not to turn on hardcore mode."],
-["MaxZombieCount","The absolute hard-cap for zombie NPCs. If this many zombies are on the server, no more will be allowed to spawn."],
-["MaxAnimalCount","Above, for animal NPCs."],
-["MaxBanditCount","Above, for non-safezone human NPCs."],
-["PVP","Toggles whether or not PVP is enabled. If this is false, no damage can be inflicted by one player on another."],
-["FallDamageMultiplier","Change how much damage falling does here. 1.0 is full damage, 0 is no damage at all."]
+["ServerName","Server name. Has a soft limit of 255 characters due to Steam server limitations.","My Server"],
+["Password","Server password. Has a soft limit of 255 characters due to Steam server limitations.","Secret Password"],
+["MOTD","Server's MOTD, displayed in character creation.","Welcome to the server."],
+["ServerTags","List of server tags for Steam - eg. 'Roleplay,' 'Hardcore,' 'PvP,' etc.","Abc:test"],
+["MaxPlayerClaims","Maximum claims per group or player.","3"],
+["Seed","Server random seed. Not used much.","0"],
+["bFirstPersonOnly","If the server forces first person only. For gameplay reasons, this has no effect.","false"],
+["bVACSecure","Whether or not to turn on VAC and EAC.","false"],
+["bIsHardcore","Whether or not to turn on hardcore mode.","false"],
+["MaxZombieCount","The absolute hard-cap for zombie NPCs. If this many zombies are on the server, no more will be allowed to spawn.","2048"],
+["MaxAnimalCount","Above, for animal NPCs.","100"],
+["MaxBanditCount","Above, for non-safezone human NPCs.","256"],
+["PVP","Toggles whether or not PVP is enabled. If this is false, no damage can be inflicted by one player on another.", "true"],
+["FallDamageMultiplier","Change how much damage falling does here. 1.0 is full damage, 0 is no damage at all.","1.0"]
 ];
 $Engine_GameSession = ["MaxPlayers","Maximum player count for the server."];
 

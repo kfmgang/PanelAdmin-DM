@@ -21,11 +21,10 @@
   $data= $datas['/Script/DeadMatter.DMGameSession'];
 
   $input_start = '<input style="margin-bottom: 2px;" type="text" name="new_steamid" value="';
-  $input_end =  '" placeholder="n/a" class="form-control" required="required" id ="new_steamid">';
 
   for ($i=0; $i < count($variable); $i++) { 
     $test = $variable[$i][0];
-
+    $input_end =  '" placeholder="'. $variable[$i][2] .'" class="form-control" required="required" id ="new_steamid">';
     // echo($datas[$variable[$i][0]]);
     ?>
 
