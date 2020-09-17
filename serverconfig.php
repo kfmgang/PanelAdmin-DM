@@ -25,16 +25,25 @@ $datas  = parse_ini_file( $ini_file, true );
 if ($_SERVER['REQUEST_METHOD'] === 'POST') 
 {
 
-    // Get input data
-    $update = filter_input_array(INPUT_POST);
-    //$text = fopen('test.txt', 'r+');
-    //fputs($text, $update);
-    //fclose($text);
+    function debug_to_console($data) {
+        $output = $data;
+        if (is_array($output))
+            $output = implode(',', $output);
+    
+        echo "<script>console.log('Debug Objects: " . $output . "' );</script>";
+    }
 
-    $ini->data['/Script/DeadMatter.SurvivalBaseGamemode']['Whitelist'][$whitelist_id] = $newsteamid;
-    $ini->write();
+    // Get input data
+    $input_data = $_POST;
+    
+        //$text = fopen('test.txt', 'r+');
+        //fputs($text, 'test');
+        //fclose($text);
+    debug_to_console("test");
+
+
     //  $update = print_r($update);
-        $_SESSION['success'] =  $update;
+        $_SESSION['success'] =  $input_data;
 
         //update Game.ini
         
