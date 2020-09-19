@@ -1,10 +1,22 @@
 <?php
+session_start();
+require('vendor/autoload.php');
+require_once 'config/config.php';
+require_once BASE_PATH . '/includes/auth_validate.php';
 require __DIR__ . "/src/functions.php";
 
 $ini_file='game_list.ini';
-$datas  = parse_ini_file( $ini_file, true );
+
+#$ini = new INI('D:Program Files (x86)/Steam/steamapps/common/Dead Matter Dedicated Server/deadmatter/Saved/Config/WindowsServer/game.ini');
+
+#$ini->data['/Script/DeadMatter.SurvivalBaseGamemode']['Whitelist'][74] = '76561190000000001';
+#$ini->write();
+  $datas  = parse_ini_file( $ini_file, true );
+  $client = new \Zyberspace\SteamWebApi\Client('C93FFB23FD0B17F012878B8B3FA69379');
+  $steamUser = new \Zyberspace\SteamWebApi\Interfaces\ISteamUser($client);
+ # print_r($datas)
 ?>
-<table id="myTable" class="table table-striped table-bordered table-condensed">
+<table id="myTable" class="table table-striped table-bordered table-condensed" data-name="listtable">
   <tbody>
   <thead>
     <tr class="header">
@@ -15,7 +27,7 @@ $datas  = parse_ini_file( $ini_file, true );
     </tr>
   </thead>
     <?php
-      $i = 0;
+      $x = 0;
       foreach( $datas['/Script/DeadMatter.SurvivalBaseGamemode']['Whitelist'] as $data)    
 
       {
@@ -24,7 +36,7 @@ $datas  = parse_ini_file( $ini_file, true );
     <tr>
       <td>
       <?php
-      $id = $i++;
+      $id = $x++;
       echo $id;
       ?>
       </td>
@@ -32,22 +44,18 @@ $datas  = parse_ini_file( $ini_file, true );
       echo ( $data ); ?></td>
       <td><a href="http://steamcommunity.com/profiles/<?php echo htmlentities($data); ?>" title="Click here to go to">
       <?php 
-      $xmlf = buildSteamURL($data);
-      libxml_use_internal_errors(TRUE);
-      $xml = simplexml_load_file($xmlf);
-      if($data =="DONOTREMOVE"){
+      if($data == "DONOTREMOVE"){
         echo("DONOTREMOVE");
-      }elseif($xml->privacyMessage){ 
-        echo("This player didnt set up their Page.");
-      }else{
-      $username = $xml->steamID;
-      echo($username);
-      }?></a></td>
+      }else {
+        $response = $steamUser->GetPlayerSummariesV2($data);
+        echo($response->response->players[0]->personaname);
+      }
+      ?></a></td>
       <td>
-                    <a href="edit_whitelist.php?whitelist_id=<?php echo $id; ?>&steam_id=<?php echo $data; ?>&operation=edit" class="btn btn-primary"><i class="glyphicon glyphicon-edit"></i></a>
-                    <a href="#" class="btn btn-danger delete_btn" data-toggle="modal" data-target="#confirm-delete-<?php echo $id; ?>"><i class="glyphicon glyphicon-trash"></i></a>
-                </td>
-            </tr>
+        <a href="edit_whitelist.php?whitelist_id=<?php echo $id; ?>&steam_id=<?php echo $data; ?>&operation=edit" class="btn btn-primary"><i class="glyphicon glyphicon-edit"></i></a>
+        <a href="#" class="btn btn-danger delete_btn" data-toggle="modal" data-target="#confirm-delete-<?php echo $id; ?>"><i class="glyphicon glyphicon-trash"></i></a>
+      </td>
+    </tr>
             <!-- Delete Confirmation Modal -->
             <div class="modal fade" id="confirm-delete-<?php echo $id; ?>" role="dialog">
                 <div class="modal-dialog">

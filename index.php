@@ -138,10 +138,60 @@ $test = $datas['/Script/DeadMatter.SurvivalBaseGamemode']['Whitelist'];
     </div>
     <!-- /.row -->
     <div class="row">
-        <div class="col-lg-8">
+        <div class="col-lg-4">
+            <h4 class="text-center">Daily statistics</h4>
+            <div class="panel panel-primary">
+            <div id="chart-container">
+        <canvas id="graphCanvas"></canvas>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            showGraph();
+        });
 
 
+        function showGraph()
+        {
+            {
+                $.post("data.php",
+                function (data)
+                {
+                    console.log(data);
+                    var day = [];
+                    var count = [];
 
+                    for (var i in data) {
+                        day.push(data[i].day);
+                        count.push(data[i].count);
+                    }
+
+                    var chartdata = {
+                        labels: day,
+                        datasets: [
+                            {
+                                label: 'Max connected',
+                                backgroundColor: '#49e2ff',
+                                borderColor: '#46d5f1',
+                                hoverBackgroundColor: '#CCCCCC',
+                                hoverBorderColor: '#666666',
+                                data: count
+                            }
+                        ]
+                    };
+
+                    var graphTarget = $("#graphCanvas");
+
+                    var barGraph = new Chart(graphTarget, {
+                        type: 'bar',
+                        data: chartdata
+                    });
+                });
+            }
+        }
+        </script>
+
+            </div>
             <!-- /.panel -->
         </div>
         <!-- /.col-lg-8 -->
