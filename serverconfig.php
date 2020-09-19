@@ -3,7 +3,8 @@ session_start();
 require_once 'config/config.php';
 require_once BASE_PATH.'/includes/auth_validate.php';
 include 'INI.class.php';
-include 'list.php';  
+include 'list.php';
+include 'functions/consolelog.php';  
 $ini = new INI('game_list.ini');
 $ini_file='game_list.ini';
 $verf  = parse_ini_file( $ini_file, true );
@@ -18,35 +19,56 @@ if(array_key_exists('ServerTags', $verf['/Script/DeadMatter.DMGameSession'])){
     $ini->write();
 }
 
-
 $datas  = parse_ini_file( $ini_file, true );
-
 // Handle update request. As the form's action attribute is set to the same script, but 'POST' method, 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') 
 {
 
-    function debug_to_console($data) {
-        $output = $data;
-        if (is_array($output))
-            $output = implode(',', $output);
-    
-        echo "<script>console.log('Debug Objects: " . $output . "' );</script>";
-    }
-
     // Get input data
-    $input_data = $_POST;
     
         //$text = fopen('test.txt', 'r+');
         //fputs($text, 'test');
         //fclose($text);
-    debug_to_console("test");
-
+        
+    for ($i=0; $i < count($variable); $i++) {
+        $input_data = array_filter($_POST)[$variable[$i][0]]; 
+        $test = $variable[$i][0];
+        $data =  $datas['/Script/DeadMatter.DMGameSession'];
+        if($test == 'ServerTags'){
+            for ($x=0; $x <= 3; $x++) {
+                $tags = array_filter($_POST)[$x];
+                if ($tags == '') {
+                    $ini->data['/Script/DeadMatter.DMGameSession']['ServerTags'][$x] = "";
+                    $ini->write();
+                } else{
+                    $ini->data['/Script/DeadMatter.DMGameSession']['ServerTags'][$x] = $tags;
+                    $ini->write();
+                }
+            }
+        }else {
+            if(array_key_exists($test, $data) && $input_data != ''){
+                $ini->data['/Script/DeadMatter.DMGameSession'][$test] = $input_data;
+                $ini->write();
+            }elseif(array_key_exists($test, $data) && $input_data == ''){
+                unset($ini->data['/Script/DeadMatter.DMGameSession'][$test]);
+                $ini->write();
+            }elseif($input_data != '') {
+                $ini->data['/Script/DeadMatter.DMGameSession'][$test] = $input_data;
+                $ini->write();
+                }
+            }
+        } 
+    
 
     //  $update = print_r($update);
-        $_SESSION['success'] =  $input_data;
-
+        $_SESSION['success'] = "Config updated successfully!";
         //update Game.ini
-        
+
+        $test = array("[]=", "[] = ", " = ");
+        $a = 'D:Program Files (x86)/Steam/steamapps/common/Dead Matter Dedicated Server/deadmatter/Saved/Config/WindowsServer/game.ini'; 
+        $b = file_get_contents('game_list.ini');  
+        $c = str_replace($test, '=', $b);
+        file_put_contents($a, $c);
 
         // Redirect to the listing page
         header('Location: serverconfig.php');

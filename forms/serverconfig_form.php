@@ -48,9 +48,12 @@
             echo($input_start.$value.$input_end);
           }else{
             // Array display
+            $x = 0;
             foreach ( $datas['/Script/DeadMatter.DMGameSession']['ServerTags'] as $key) {
               $value = $key;
-              echo($input_start.$value.$input_end);
+              $id = $x++;
+              $input_start_array = '<input style="margin-bottom: 2px;" type="text" name="' . $id .'" value="';
+              echo($input_start_array.$value.$input_end);
             }
           }
       } else {
