@@ -27,11 +27,11 @@ Ban
 - Ajout filtre (Steamid,Pseudo)✅  
 
 Config Serveur (Game.ini)
-- List des options de config✅⚙️(pas fini)  (seulement pour [/Script/DeadMatter.DMGameSession] )  
+- List des options de config✅
    - affiche la config actuel✅  
    - affiche explication options de config✅
-- Possible de modifier/effacer/ajouter❌  
-- Ajout sécurité sur les inputs❌  
+- Possible de modifier/effacer/ajouter ✅  
+- Ajout sécurité sur les inputs ⚙️  
 - Ajout filtre (Option, Valeur config)✅  
 
 Gestion serveur
