@@ -20,7 +20,7 @@
 
 
   for ($i=0; $i < count($variable); $i++) { 
-    $input_start = '<input style="margin-bottom: 2px;" type="text" name="' .$variable[$i][0] .'" value="';
+    $input_start = '<input style="margin-bottom: 2px;" type="' .$variable[$i][4] .'" name="' .$variable[$i][0] .'" value="';
     $input_end =  '" placeholder="'. $variable[$i][2] .'" class="form-control"  id ="' .$variable[$i][0] .'">';
     // echo($datas[$variable[$i][0]]);
     ?>
