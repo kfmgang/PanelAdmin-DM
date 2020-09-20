@@ -31,7 +31,7 @@ Config Serveur (Game.ini)
    - affiche la config actuel✅  
    - affiche explication options de config✅
 - Possible de modifier/effacer/ajouter ✅  
-- Ajout sécurité sur les inputs ⚙️  
+- Ajout sécurité sur les inputs ✅  
 - Ajout filtre (Option, Valeur config)✅  
 
 Gestion serveur
@@ -42,7 +42,7 @@ Gestion serveur
 - affiche l'uptime du serveur❌ 
 - afficher la memoire utilisé❌ 
 - afficher heure du dernier crash / restart❌ 
-- possibilité de Start/stop/restart❌ 
+- possibilité de Start/stop/restart⚙️ 
  
 NB Joueurs connecté (visible pour les joueurs)
 - List joueurs connecté ❌ 
