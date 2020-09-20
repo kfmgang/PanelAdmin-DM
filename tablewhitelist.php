@@ -16,6 +16,7 @@ $ini_file='game_list.ini';
   $steamUser = new \Zyberspace\SteamWebApi\Interfaces\ISteamUser($client);
  # print_r($datas)
 ?>
+
 <table id="myTable" class="table table-striped table-bordered table-condensed" data-name="listtable">
   <tbody>
   <thead>
@@ -56,6 +57,13 @@ $ini_file='game_list.ini';
         <a href="#" class="btn btn-danger delete_btn" data-toggle="modal" data-target="#confirm-delete-<?php echo $id; ?>"><i class="glyphicon glyphicon-trash"></i></a>
       </td>
     </tr>
+
+            <!-- //Delete Confirmation Modal -->
+    <?php 
+     }
+    ?>
+  </tbody>
+</table>
             <!-- Delete Confirmation Modal -->
             <div class="modal fade" id="confirm-delete-<?php echo $id; ?>" role="dialog">
                 <div class="modal-dialog">
@@ -78,9 +86,3 @@ $ini_file='game_list.ini';
                     </form>
                 </div>
             </div>
-            <!-- //Delete Confirmation Modal -->
-    <?php 
-     }
-    ?>
-  </tbody>
-</table>

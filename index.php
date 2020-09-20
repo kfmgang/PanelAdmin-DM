@@ -2,7 +2,6 @@
 session_start();
 require_once './config/config.php';
 require_once 'includes/auth_validate.php';
-
 require_once './functions/requests.php';
 //Get DB instance. function is defined in config.php
 $db = getDbInstance();

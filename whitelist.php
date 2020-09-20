@@ -37,7 +37,7 @@ $ini_file='game_list.ini';
 </div>    
     <!-- //Filters -->
 <div id="mySlowTable">
-    
+
 </div>
 </div>
 
@@ -48,8 +48,7 @@ $(function() {
 
     $('#mySlowTable').load("tablewhitelist.php");
 });
-</script>
-<script>
+
 function myFunction() {
   var input, filter, table, tr, td, i,alltables;
 alltables = document.querySelectorAll("table[data-name=listtable]");

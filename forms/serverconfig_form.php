@@ -17,11 +17,9 @@
 
   <?php
 
-  $data= $datas['/Script/DeadMatter.DMGameSession'];
 
 
   for ($i=0; $i < count($variable); $i++) { 
-    $test = $variable[$i][0];
     $input_start = '<input style="margin-bottom: 2px;" type="text" name="' .$variable[$i][0] .'" value="';
     $input_end =  '" placeholder="'. $variable[$i][2] .'" class="form-control"  id ="' .$variable[$i][0] .'">';
     // echo($datas[$variable[$i][0]]);
@@ -37,13 +35,14 @@
 
       <td> <!-- Data -->
 
-      <?php 
-      if(array_key_exists($test, $data)){
+      <?php
+      if (isset($datas[$variable[$i][3]])) {
+        if(array_key_exists($variable[$i][0], $datas[$variable[$i][3]])){
 
-          if(!is_array($data[$variable[$i][0]]))
+          if(!is_array($datas[$variable[$i][3]][$variable[$i][0]]))
           {
             // Normal display
-            $value = $data[$variable[$i][0]];
+            $value = $datas[$variable[$i][3]][$variable[$i][0]];
             echo($input_start.$value.$input_end);
           }else{
             // Array display
@@ -58,6 +57,10 @@
       } else {
         echo($input_start.$input_end);
       }
+    }else {
+      echo($input_start.$input_end);
+    }
+      
       ?>
 
       </td>

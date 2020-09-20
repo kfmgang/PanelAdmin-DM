@@ -33,7 +33,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
     for ($i=0; $i < count($variable); $i++) {
         $input_data = array_filter($_POST)[$variable[$i][0]]; 
         $test = $variable[$i][0];
-        $data =  $datas[$variable[$i][3]];
         if($test == 'ServerTags'){
             for ($x=0; $x <= 3; $x++) {
                 $tags = array_filter($_POST)[$x];
@@ -46,16 +45,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
                 }
             }
         }else {
-            if(array_key_exists($test, $data) && $input_data != ''){
-                $ini->data[$variable[$i][3]][$test] = $input_data;
-                $ini->write();
-            }elseif(array_key_exists($test, $data) && $input_data == ''){
-                unset($ini->data[$variable[$i][3]][$test]);
-                $ini->write();
-            }elseif($input_data != '') {
-                $ini->data[$variable[$i][3]][$test] = $input_data;
-                $ini->write();
+            if (isset($datas[$variable[$i][3]])) {
+                $data =  $datas[$variable[$i][3]];
+                if(array_key_exists($test, $data) && $input_data != ''){
+                    $ini->data[$variable[$i][3]][$test] = $input_data;
+                    $ini->write();
+                }elseif(array_key_exists($test, $data) && $input_data == ''){
+                    unset($ini->data[$variable[$i][3]][$test]);
+                    $ini->write();
+                }elseif($input_data != '') {
+                    $ini->data[$variable[$i][3]][$test] = $input_data;
+                    $ini->write();
+                    }
+            }else {
+                if ($input_data == '') {
+                }else {
+                    $ini->data[$variable[$i][3]][$test] = $input_data;
+                    $ini->write();
                 }
+            }
             }
         } 
     
