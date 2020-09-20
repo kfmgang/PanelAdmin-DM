@@ -1,0 +1,26 @@
+{
+    "Status":"stop",
+
+    "max_ram":40,
+
+    "auto_restart":true,
+    
+    "max_system_ram":50,
+    
+    "RamRefresh":true,
+    
+    "Path_To_Server":"D:/Program Files (x86)/Steam/steamapps/common/Dead Matter Dedicated ServerdeadmatterServer.exe",
+    
+    "Steam_CMD_Path":"",
+    
+    "Ram_Clean_Timer":600,
+    
+    "Server_Check_Timer":10,
+    
+    "Skip_Window_To_Monitor":false,
+
+    "SteamUsername":"",
+    
+    "SteamPassword":""
+
+}
