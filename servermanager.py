@@ -27,6 +27,8 @@ SteamUser = config['SteamUsername']
 SteamPass = config['SteamPassword']
 
 
+Status = ""
+
 def checkIfProcessRunning(processName):
     for proc in psutil.process_iter():
         try:
@@ -38,35 +40,34 @@ def checkIfProcessRunning(processName):
 
 
 def checkrunning():
+    global Status
     while 1:
+        c = open("config/config.json", 'r+')
+        config = json.load(c)
+        Status = config['Status']
         if checkIfProcessRunning('deadmatterServer.exe') is True:
             print('Dead Matter Server is runing')
             for proc in psutil.process_iter():
                 if proc.name() == "deadmatterServer.exe":
                     pid = proc.pid
-                checkcrash()
-        sleep(1)
+            checkcrash()
 
-#bug une fois que le serveur crash il passe pas dans le check runing
+
 
 def checkcrash():
+    global Status
     while 1:
         if checkIfProcessRunning('deadmatterServer.exe') is False and Status == 'check':
             print('(Crash/restart) send Notification on Discord !')
             menu()
             sleep(1)
-        elif checkIfProcessRunning('deadmatterServer.exe') is True:
+        elif checkIfProcessRunning('deadmatterServer-Win64-Shipping.exe') is True and Status == 'stop':
+            os.system("taskkill /f /im  deadmatterServer-Win64-Shipping.exe")
             menu()
+            sleep(1)          
 
 def menu():
-    c = open("config/config.json", 'r+')
-    config = json.load(c)
-    Status = config['Status']
-    if (Status == 'check'):
-        print(Status)
-        checkrunning()
-    else:
-        print(Status)    
+    checkrunning()    
 
 if __name__ == "__main__":
     try:
